@@ -4,8 +4,12 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 ZALO_TOKEN = "740210487292609069:geEiYmngxOKonbNkDqxVuBQFozJcOwcHlxYbaNkJkHUBImvyEOBEEAaKytHaXtUj"
 
+# --- BƯỚC XÁC THỰC DOMAIN (GIẤY THÔNG HÀNH) ---
+@app.route('/K_I_E9Jc5IuMuB0XtSKQUrt0ZtcnjbiWCZKv.html')
+def verify_zalo():
+    return "K_I_E9Jc5IuMuB0XtSKQUrt0ZtcnjbiWCZKv"
+
 def send_reply(user_id, text):
-    # Hàm gửi tin nhắn phản hồi qua Zalo API
     url = "https://openapi.zalo.me/v3.0/oa/message/promotion"
     headers = {"access_token": ZALO_TOKEN, "Content-Type": "application/json"}
     payload = {
@@ -21,18 +25,14 @@ def webhook():
         return "Hệ thống Kem-Vani đã Online!", 200
     
     data = request.json
-    print(f"📥 Nhận tin nhắn: {data}")
-    
-    # Xử lý khi có tin nhắn văn bản đến
     if data and "message" in data:
         user_id = data['sender']['id']
         user_text = data['message']['text']
         
-        # Phản hồi lệnh /ping
         if user_text.lower() == "/ping":
-            send_reply(user_id, "Pong! Thằng ku em đã nhận lệnh và đang trực 24/7.")
+            send_reply(user_id, "Pong! Thằng ku em đã sẵn sàng phục vụ.")
         else:
-            send_reply(user_id, f"Bot đã nhận tin: {user_text}")
+            send_reply(user_id, f"Đã nhận lệnh: {user_text}")
             
     return jsonify({"status": 200}), 200
 
