@@ -6,11 +6,7 @@ app = Flask(__name__)
 @app.route('/webhook', methods=['POST', 'GET'])
 def webhook():
     if request.method == 'GET':
-        return "Bot 'thằng ku em' của Kem-Vani đã Online 24/7!", 200
-    
-    data = request.json
-    print(f"📥 Zalo nhận tin: {data}")
-    # Đây là nơi bạn sẽ gọi DuckDB để lấy báo cáo NIM/CASA/CL025
+        return "Bot 'thằng ku em' đã được sửa lỗi và sẵn sàng!", 200
     return jsonify({"status": 200}), 200
 
 if __name__ == "__main__":
