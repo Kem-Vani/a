@@ -4,8 +4,8 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 ZALO_TOKEN = "740210487292609069:geEiYmngxOKonbNkDqxVuBQFozJcOwcHlxYbaNkJkHUBImvyEOBEEAaKytHaXtUj"
 
-# --- BƯỚC XÁC THỰC DOMAIN (GIẤY THÔNG HÀNH) ---
-@app.route('/K_I_E9Jc5IuMuB0XtSKQUrt0ZtcnjbiWCZKv.html')
+# --- SỬA LỖI ĐƯỜNG DẪN XÁC THỰC (ĐÚNG THEO ẢNH 02:33) ---
+@app.route('/zalo_verifierK_I_E9Jc5IuMuB0XtSKQUrt0ZtcnjbiWCZKv.html')
 def verify_zalo():
     return "K_I_E9Jc5IuMuB0XtSKQUrt0ZtcnjbiWCZKv"
 
@@ -30,9 +30,9 @@ def webhook():
         user_text = data['message']['text']
         
         if user_text.lower() == "/ping":
-            send_reply(user_id, "Pong! Thằng ku em đã sẵn sàng phục vụ.")
+            send_reply(user_id, "Pong! Hệ thống đã thông suốt.")
         else:
-            send_reply(user_id, f"Đã nhận lệnh: {user_text}")
+            send_reply(user_id, f"Bot nhận tin: {user_text}")
             
     return jsonify({"status": 200}), 200
 
