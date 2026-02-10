@@ -25,18 +25,13 @@ def verify_zalo():
 
 # 3. HÀM GỬI TIN NHẮN
 def send_reply(user_id, text):
-    url = "https://openapi.zalo.me/v3.0/oa/message/promotion"
+    url = f"https://bot-api.zaloplatforms.com/bot740210487292609069:geEiYmngxOKonbNkDqxVuBQFozJcOwcHlxYbaNkJkHUBImvyEOBEEAaKytHaXtUj/sendMessage"
     headers = {
-        "access_token": ZALO_TOKEN,
         "Content-Type": "application/json"
     }
     payload = {
-        "recipient": {
-            "user_id": user_id
-        },
-        "message": {
-            "text": text
-        }
+        "chat_id": user_id,
+        "text": text
     }
     return requests.post(url, headers=headers, json=payload).json()
 
